@@ -7,7 +7,7 @@ function init() {
             let cell = document.createElement('div');
             cell.classList.add('cell');
             cell.id = `${row}-${col}`
-            cell.onclick = activate;
+            cell.onmousedown = activate;
             // @ts-ignore
             grid.appendChild(cell);
         }

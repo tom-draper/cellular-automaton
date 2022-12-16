@@ -59,17 +59,16 @@ function moore(row: number, col: number, grid: Array<Array<boolean>>) {
 }
 
 function conwayGameOfLife(row: number, col: number, grid: Array<Array<boolean>>) {
-    let count = countMooreNeighbours(row, col)
-    if (document.getElementById(`${row}-${col}`)?.classList.contains('active') && count < 2) {
-        grid[col][row] = false;
-    } else if (document.getElementById(`${row}-${col}`)?.classList.contains('active') && count > 3) {
-        grid[col][row] = false;
-    } else if (document.getElementById(`${row}-${col}`)?.classList.contains('active') && (count == 2 || count == 3)) {
-        grid[col][row] = false;
+    // 1. Any live cell with two or three live neighbours survives.
+    // 2. Any dead cell with three live neighbours becomes a live cell.
+    // 3. All other live cells die in the next generation. Similarly, all other dead cells stay dead.
+    let count = countMooreNeighbours(row, col);
+    if (document.getElementById(`${row}-${col}`)?.classList.contains('active') && (count == 2 || count == 3)) {
+        grid[col][row] = true;
     } else if (!document.getElementById(`${row}-${col}`)?.classList.contains('active') && count == 3) {
         grid[col][row] = true;
     } else {
-        grid[col][row] = document.getElementById(`${row}-${col}`)?.classList.contains('active') as boolean;
+        grid[col][row] = false;
     }
 }
 
@@ -121,7 +120,7 @@ function countNeumannNeighbours(row: number, col: number): number {
 }
 
 function countMooreNeighbours(row: number, col: number): number {
-    let count = countNeumannNeighbours(row, col)
+    let count = countNeumannNeighbours(row, col);
     if (row + 1 < height && col + 1 < width && document.getElementById(`${row + 1}-${col + 1}`)?.classList.contains('active')) {
         count += 1;
     }
