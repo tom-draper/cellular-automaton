@@ -72,7 +72,7 @@ function activate(el: any) {
 }
 
 
-const width = 60;
+const width = 70;
 const height = 40;
 
 init();

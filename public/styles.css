@@ -1,8 +1,11 @@
 
+body {
+    margin: 0;
+}
 
 #grid {
     display: grid;
-    grid-template-columns: repeat(60, 20px);
+    grid-template-columns: repeat(70, 20px);
 }
 
 .cell {
@@ -21,19 +24,31 @@
 }
 
 button {
-    width: 130px;
+    /* width: 130px; */
+    border: none;
+    margin: 0;
+    height: 25px;
     flex: 1;
+    border:  1px solid rgb(219, 219, 219);
+}
+
+button:hover {
+    background: rgb(158, 158, 158);
 }
 
 .controller {
-    margin-bottom: 10px;
-    width: 5000px;
+    /* margin-bottom: 10px; */
+    width: calc(20px * 70);
+    display: flex;
 }
 
 #pauseBtn {
-    margin-left: 130px;
+    /* margin-left: 130px; */
+    flex-grow: 1;
+    width: calc(20px * 70);
 }
 
 .btnActive {
-    background: rgb(112, 197, 243);
+    background: #235de5;
+    color: white;
 }
