@@ -14,32 +14,17 @@ function init() {
     }
 }
 
-function updatedGrid(): Array<Array<boolean>> {
+function updatedGrid(update: (row: number, col: number, grid: Array<Array<boolean>>) => void): Array<Array<boolean>> {
     let grid = [...Array(width)].map(_ => Array(height).fill(false))
     for (let row = 0; row < height; row++) {
         for (let col = 0; col < width; col++) {
-            let cell = document.getElementById(`${row}-${col}`);
-            if (cell?.classList.contains('active')) {
-                if (row + 1 < height) {
-                    grid[col][row + 1] = true;
-                }
-                if (col + 1 < width) {
-                    grid[col + 1][row] = true;
-                }
-                if (row > 0) {
-                    grid[col][row - 1] = true;
-                }
-                if (col > 0) {
-                    grid[col - 1][row] = true;
-                }
-            }
+            update(row, col, grid);
         }
     }
     return grid
 }
 
 function updateHTML(grid: Array<Array<boolean>>) {
-    // Overwrite HTML grid with updated grid
     for (let row = 0; row < height; row++) {
         for (let col = 0; col < width; col++) {
             if (grid[col][row]) {
@@ -52,7 +37,8 @@ function updateHTML(grid: Array<Array<boolean>>) {
 }
 
 function update() {
-    let grid = updatedGrid();
+    let grid = updatedGrid(conwayGameOfLife);
+    // Overwrite HTML grid with updated grid
     updateHTML(grid);
 
     setTimeout(update, 200);
