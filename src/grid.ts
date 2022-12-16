@@ -36,10 +36,33 @@ function updateHTML(grid: Array<Array<boolean>>) {
     }
 }
 
+function getCurrentRule(): (row: number, col: number, grid: Array<Array<boolean>>) => void {
+    let rule;
+    if (currentRule == 'simpleToggle') {
+        rule = simpleToggle;
+    } else if (currentRule == 'twoNeighbours') {
+        rule = twoNeighbours;
+    } else if (currentRule == 'threeNeighbours') {
+        rule = threeNeighbours;
+    } else if (currentRule == 'vonNeumann') {
+        rule = vonNeumann;
+    } else if (currentRule == 'moore') {
+        rule = moore;
+    } else if (currentRule == 'conwayGameOfLife') {
+        rule = conwayGameOfLife;
+    } else {
+        rule = simpleAlternate;
+    }
+    return rule
+}
+
 function update() {
-    let grid = updatedGrid(conwayGameOfLife);
-    // Overwrite HTML grid with updated grid
-    updateHTML(grid);
+    if (!pause) {
+        let rule = getCurrentRule()
+        let grid = updatedGrid(rule);
+        // Overwrite HTML grid with updated grid
+        updateHTML(grid);
+    }
 
     setTimeout(update, 200);
 }
@@ -47,6 +70,7 @@ function update() {
 function activate(el: any) {
     el.srcElement.classList.toggle('active')
 }
+
 
 const width = 60;
 const height = 40;

@@ -19,3 +19,21 @@
 .active {
     background: red;
 }
+
+button {
+    width: 130px;
+    flex: 1;
+}
+
+.controller {
+    margin-bottom: 10px;
+    width: 5000px;
+}
+
+#pauseBtn {
+    margin-left: 130px;
+}
+
+.btnActive {
+    background: rgb(112, 197, 243);
+}

@@ -4,12 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="public/control.js"></script>
     <script defer src="public/rules.js"></script>
     <script defer src="public/grid.js"></script>
     <link rel="stylesheet" type="text/css" href="public/styles.css" />
     <title>Cellular Automaton</title>
   </head>
   <body>
+    <div class="controller">
+      <button id="simpleAlternate" onclick="setRule('simpleAlternate')">Alternate</button>
+      <button id="simpleToggle" onclick="setRule('simpleToggle')">Toggle</button>
+      <button id="twoNeighbours" onclick="setRule('twoNeighbours')">Two Neighbours</button>
+      <button id="threeNeighbours" onclick="setRule('threeNeighbours')">Three Neighbours</button>
+      <button id="vonNeumann" onclick="setRule('vonNeumann')">von Neumann</button>
+      <button id="moore" onclick="setRule('moore')">Moore</button>
+      <button id="conwayGameOfLife" onclick="setRule('conwayGameOfLife')">Game of Life</button>
+      <button id="pauseBtn" onclick="togglePause()">Pause</button>
+    </div>
     <div id="grid"></div>
   </body>
 </html>
