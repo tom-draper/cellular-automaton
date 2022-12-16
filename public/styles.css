@@ -1,6 +1,6 @@
 
 body {
-    margin: 0;
+    margin: auto
 }
 
 #grid {
@@ -9,7 +9,7 @@ body {
 }
 
 .cell {
-    background: rgb(232, 229, 229);
+    background: rgb(243, 243, 243);
     width: 20px;
     height: 20px;
     margin: 0;
@@ -33,7 +33,7 @@ button {
 }
 
 button:hover {
-    background: rgb(158, 158, 158);
+    background: rgb(222, 222, 222);
 }
 
 .controller {
@@ -51,4 +51,8 @@ button:hover {
 .btnActive {
     background: #235de5;
     color: white;
+}
+
+.btnActive:hover {
+    background: #235de5;
 }
