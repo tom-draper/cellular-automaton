@@ -20,10 +20,10 @@ function updatedGrid(): Array<Array<boolean>> {
         for (let col = 0; col < width; col++) {
             let cell = document.getElementById(`${row}-${col}`);
             if (cell?.classList.contains('active')) {
-                if (row + 1 < width) {
+                if (row + 1 < height) {
                     grid[col][row + 1] = true;
                 }
-                if (col + 1 < height) {
+                if (col + 1 < width) {
                     grid[col + 1][row] = true;
                 }
                 if (row > 0) {
@@ -55,7 +55,7 @@ function update() {
     let grid = updatedGrid();
     updateHTML(grid);
 
-    setTimeout(update, 300);
+    setTimeout(update, 200);
 }
 
 function activate(el: any) {
