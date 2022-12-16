@@ -1,0 +1,21 @@
+
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(60, 20px);
+}
+
+.cell {
+    background: rgb(232, 229, 229);
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.cell:hover {
+    background: radial-gradient(rgb(111, 193, 240), rgb(143, 255, 223));
+}
+
+.active {
+    background: red;
+}
