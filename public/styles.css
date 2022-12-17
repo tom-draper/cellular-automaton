@@ -16,16 +16,14 @@ body {
 }
 
 .cell:hover {
-    background: radial-gradient(rgb(111, 193, 240), rgb(143, 255, 223));
+    background: radial-gradient(rgb(0, 190, 218), rgb(0, 217, 159));
 }
 
 .active {
-    background: red;
+    background: rgb(12, 53, 71);
 }
 
 button {
-    /* width: 130px; */
-    border: none;
     margin: 0;
     height: 25px;
     flex: 1;
@@ -37,22 +35,16 @@ button:hover {
 }
 
 .controller {
-    /* margin-bottom: 10px; */
     width: calc(20px * 70);
     display: flex;
 }
 
 #pauseBtn {
-    /* margin-left: 130px; */
     flex-grow: 1;
     width: calc(20px * 70);
 }
 
-.btnActive {
-    background: #235de5;
-    color: white;
-}
-
+.btnActive, 
 .btnActive:hover {
-    background: #235de5;
+    background: radial-gradient(rgb(0, 190, 218), rgb(0, 217, 159));
 }

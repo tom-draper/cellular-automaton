@@ -28,8 +28,10 @@ function updateHTML(grid: Array<Array<boolean>>) {
     for (let row = 0; row < height; row++) {
         for (let col = 0; col < width; col++) {
             if (grid[col][row]) {
+                // @ts-ignore
                 document.getElementById(`${row}-${col}`).className = 'cell active';
             } else {
+                // @ts-ignore
                 document.getElementById(`${row}-${col}`).className = 'cell';
             }
         }
