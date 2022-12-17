@@ -1,4 +1,67 @@
 "use strict";
+function activateNeighbours(grid, row, col) {
+    if (row + 1 < height) {
+        grid[col][row + 1] = true;
+    }
+    if (col + 1 < width) {
+        grid[col + 1][row] = true;
+    }
+    if (row > 0) {
+        grid[col][row - 1] = true;
+    }
+    if (col > 0) {
+        grid[col - 1][row] = true;
+    }
+}
+function toggleNeighbours(grid, row, col) {
+    if (row + 1 < height) {
+        grid[col][row + 1] = !grid[col][row + 1];
+    }
+    if (col + 1 < width) {
+        grid[col + 1][row] = !grid[col + 1][row];
+    }
+    if (row > 0) {
+        grid[col][row - 1] = !grid[col][row - 1];
+    }
+    if (col > 0) {
+        grid[col - 1][row] = !grid[col - 1][row];
+    }
+}
+function countNeumannNeighbours(row, col) {
+    var _a, _b, _c, _d;
+    let count = 0;
+    if (row + 1 < height && ((_a = document.getElementById(`${row + 1}-${col}`)) === null || _a === void 0 ? void 0 : _a.classList.contains('active'))) {
+        count += 1;
+    }
+    if (col + 1 < width && ((_b = document.getElementById(`${row}-${col + 1}`)) === null || _b === void 0 ? void 0 : _b.classList.contains('active'))) {
+        count += 1;
+    }
+    if (row > 0 && ((_c = document.getElementById(`${row - 1}-${col}`)) === null || _c === void 0 ? void 0 : _c.classList.contains('active'))) {
+        count += 1;
+    }
+    if (col > 0 && ((_d = document.getElementById(`${row}-${col - 1}`)) === null || _d === void 0 ? void 0 : _d.classList.contains('active'))) {
+        count += 1;
+    }
+    return count;
+}
+function countMooreNeighbours(row, col) {
+    var _a, _b, _c, _d;
+    let count = countNeumannNeighbours(row, col);
+    if (row + 1 < height && col + 1 < width && ((_a = document.getElementById(`${row + 1}-${col + 1}`)) === null || _a === void 0 ? void 0 : _a.classList.contains('active'))) {
+        count += 1;
+    }
+    if (row + 1 < height && col > 0 && ((_b = document.getElementById(`${row + 1}-${col - 1}`)) === null || _b === void 0 ? void 0 : _b.classList.contains('active'))) {
+        count += 1;
+    }
+    if (row > 0 && col + 1 < width && ((_c = document.getElementById(`${row - 1}-${col + 1}`)) === null || _c === void 0 ? void 0 : _c.classList.contains('active'))) {
+        count += 1;
+    }
+    if (row > 0 && col > 0 && ((_d = document.getElementById(`${row - 1}-${col - 1}`)) === null || _d === void 0 ? void 0 : _d.classList.contains('active'))) {
+        count += 1;
+    }
+    return count;
+}
+// --------------------------------- 2D rules ----------------------------------
 function simpleAlternate(row, col, grid) {
     let cell = document.getElementById(`${row}-${col}`);
     if (cell === null || cell === void 0 ? void 0 : cell.classList.contains('active')) {
@@ -78,66 +141,4 @@ function conwayGameOfLife(row, col, grid) {
     else {
         grid[col][row] = false;
     }
-}
-function activateNeighbours(grid, row, col) {
-    if (row + 1 < height) {
-        grid[col][row + 1] = true;
-    }
-    if (col + 1 < width) {
-        grid[col + 1][row] = true;
-    }
-    if (row > 0) {
-        grid[col][row - 1] = true;
-    }
-    if (col > 0) {
-        grid[col - 1][row] = true;
-    }
-}
-function toggleNeighbours(grid, row, col) {
-    if (row + 1 < height) {
-        grid[col][row + 1] = !grid[col][row + 1];
-    }
-    if (col + 1 < width) {
-        grid[col + 1][row] = !grid[col + 1][row];
-    }
-    if (row > 0) {
-        grid[col][row - 1] = !grid[col][row - 1];
-    }
-    if (col > 0) {
-        grid[col - 1][row] = !grid[col - 1][row];
-    }
-}
-function countNeumannNeighbours(row, col) {
-    var _a, _b, _c, _d;
-    let count = 0;
-    if (row + 1 < height && ((_a = document.getElementById(`${row + 1}-${col}`)) === null || _a === void 0 ? void 0 : _a.classList.contains('active'))) {
-        count += 1;
-    }
-    if (col + 1 < width && ((_b = document.getElementById(`${row}-${col + 1}`)) === null || _b === void 0 ? void 0 : _b.classList.contains('active'))) {
-        count += 1;
-    }
-    if (row > 0 && ((_c = document.getElementById(`${row - 1}-${col}`)) === null || _c === void 0 ? void 0 : _c.classList.contains('active'))) {
-        count += 1;
-    }
-    if (col > 0 && ((_d = document.getElementById(`${row}-${col - 1}`)) === null || _d === void 0 ? void 0 : _d.classList.contains('active'))) {
-        count += 1;
-    }
-    return count;
-}
-function countMooreNeighbours(row, col) {
-    var _a, _b, _c, _d;
-    let count = countNeumannNeighbours(row, col);
-    if (row + 1 < height && col + 1 < width && ((_a = document.getElementById(`${row + 1}-${col + 1}`)) === null || _a === void 0 ? void 0 : _a.classList.contains('active'))) {
-        count += 1;
-    }
-    if (row + 1 < height && col > 0 && ((_b = document.getElementById(`${row + 1}-${col - 1}`)) === null || _b === void 0 ? void 0 : _b.classList.contains('active'))) {
-        count += 1;
-    }
-    if (row > 0 && col + 1 < width && ((_c = document.getElementById(`${row - 1}-${col + 1}`)) === null || _c === void 0 ? void 0 : _c.classList.contains('active'))) {
-        count += 1;
-    }
-    if (row > 0 && col > 0 && ((_d = document.getElementById(`${row - 1}-${col - 1}`)) === null || _d === void 0 ? void 0 : _d.classList.contains('active'))) {
-        count += 1;
-    }
-    return count;
 }
